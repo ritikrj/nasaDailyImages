@@ -2,6 +2,7 @@ package com.rk.nasadailyimages.DI
 
 import com.rk.nasadailyimages.Data.DataBase
 import com.rk.nasadailyimages.Domain.usecases.ImageRequestUseCase
+import com.rk.nasadailyimages.Domain.usecases.Savefavoriteitem
 import com.rk.nasadailyimages.UI.ApplicationClass
 import com.rk.nasadailyimages.UI.ImageOfTheDayFragment
 import dagger.Component
@@ -13,4 +14,5 @@ interface AppComponent {
 
     fun getImageRequestUseCase():ImageRequestUseCase
     fun getDataBase(): DataBase
+    fun getSaveFavouriteItem(): Savefavoriteitem
 }

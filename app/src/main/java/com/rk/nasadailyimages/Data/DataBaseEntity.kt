@@ -3,8 +3,9 @@ package com.rk.nasadailyimages.Data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.rk.nasadailyimages.Common.Constants
 
-@Entity(tableName = "image_table")
+@Entity(tableName = Constants.IMAGES_TABLE)
 class DataBaseEntity (
     @ColumnInfo(name = "copyright")
     val copyright: String,

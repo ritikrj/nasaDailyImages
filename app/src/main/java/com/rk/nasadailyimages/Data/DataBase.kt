@@ -2,7 +2,7 @@ package com.rk.nasadailyimages.Data
 
 import android.content.Context
 import androidx.room.*
-@Database(entities = [DataBaseEntity::class], version = 1)
+@Database(entities = [DataBaseEntity::class], version = 1, exportSchema = false)
 abstract class DataBase: RoomDatabase() {
     abstract fun imageTableDao(): ImageTableDao
 
@@ -20,7 +20,7 @@ abstract class DataBase: RoomDatabase() {
                     context.applicationContext,
                     DataBase::class.java,
                     "image_database"
-                ).build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
                 // return instance
                 instance

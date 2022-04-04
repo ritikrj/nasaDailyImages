@@ -3,15 +3,13 @@ package com.rk.nasadailyimages.Data
 import android.util.Log
 import com.rk.nasadailyimages.Domain.repo.IRepository
 import com.rk.nasadailyimages.UI.ApplicationClass
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class Repository @Inject constructor(val imageOfDayApi:NasaAPI):IRepository {
+class Repository @Inject constructor(val imageOfDayApi:NasaAPI, val db:DataBase):IRepository {
 
 
     override suspend fun  loadImageOfTheDay(date:String):ImageLoadResult = suspendCancellableCoroutine<ImageLoadResult>{
@@ -25,8 +23,10 @@ class Repository @Inject constructor(val imageOfDayApi:NasaAPI):IRepository {
                 response: Response<ImageOfDateResponnseModel>?
             ) {
                 Log.d("${this.javaClass} "," Success "+response?.body().toString())
-
-                //ApplicationClass.instance.getDataBase().imageTableDao().insert((response?.body() as ImageOfDateResponnseModel ).toDBEntry())
+               // val coroutineScope = CoroutineScope(Job())
+              //  coroutineScope.launch(Dispatchers.IO) {
+                  ApplicationClass.instance.getDataBase().imageTableDao().insert((response?.body() as ImageOfDateResponnseModel ).toDBEntry())
+            //    }
 
                 it.resume(ImageLoadResult.Success((response?.body() as ImageOfDateResponnseModel ).toDBEntry() ),null)
             }
@@ -38,5 +38,10 @@ class Repository @Inject constructor(val imageOfDayApi:NasaAPI):IRepository {
 
         })
 
+    }
+
+
+    override fun updateItem(item: DataBaseEntity) {
+        db.imageTableDao().update(item)
     }
 }
