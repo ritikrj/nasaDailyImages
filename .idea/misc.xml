@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ritik/AndroidStudioProjects/nasaDailyImages/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/nasaDailyImages/app/src/main/res/layout/fav_item.xml" value="0.1" />
         <entry key="..\:/Users/ritik/AndroidStudioProjects/nasaDailyImages/app/src/main/res/layout/fragment_favourite_images.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/ritik/AndroidStudioProjects/nasaDailyImages/app/src/main/res/layout/fragment_image_of_the_day.xml" value="0.1" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/nasaDailyImages/app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
   </component>
