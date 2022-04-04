@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.EditText
+import android.widget.RadioGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.rk.nasadailyimages.DI.AppComponent
@@ -44,6 +46,15 @@ class ImageOfDayFrag : Fragment() {
                 getImageOfDayButton.setOnClickListener {
                     viewModel.requestImageOfDay(editTextDate.text.toString())
                 }
+                checkBox.setOnCheckedChangeListener(object :
+                    CompoundButton.OnCheckedChangeListener {
+                    override fun onCheckedChanged(p0: CompoundButton?, isChecked: Boolean) {
+                        if(isChecked){
+                          viewModel
+                        }
+                    }
+
+                })
             }
 
         }

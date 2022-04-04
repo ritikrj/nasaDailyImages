@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.rk.nasadailyimages.Data.DataBaseEntity
 import com.rk.nasadailyimages.Data.ImageLoadResult
 import com.rk.nasadailyimages.Domain.usecases.ImageRequestUseCase
+import com.rk.nasadailyimages.Domain.usecases.Savefavoriteitem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -16,11 +17,13 @@ class ImageOfDayFragViewModel:ViewModel() {
 
 
     var imageRequestUsecase: ImageRequestUseCase
+    var savefavoriteItem: Savefavoriteitem
     val result: MutableLiveData<DataBaseEntity> = MutableLiveData()
     val _result = result
 
     init {
         imageRequestUsecase = ApplicationClass.instance.getImageRequestUseCase()
+        savefavoriteItem = ApplicationClass.instance.getSaveFavouriteItem()
 
         val date = Calendar.getInstance().time
 
@@ -30,7 +33,7 @@ class ImageOfDayFragViewModel:ViewModel() {
     }
 
     fun requestImageOfDay(date:String) = viewModelScope.launch(Dispatchers.IO){
-       val requestResult =  async{
+       val requestResult =  async(Dispatchers.IO){
             imageRequestUsecase.getImage(date)
         }
         requestResult.await().let {
@@ -42,5 +45,9 @@ class ImageOfDayFragViewModel:ViewModel() {
         }
 
 
+    }
+
+    fun updateImageOfDayItem(isChecked:Boolean){
+        savefavoriteItem.saveItem(result.value!!)
     }
 }
