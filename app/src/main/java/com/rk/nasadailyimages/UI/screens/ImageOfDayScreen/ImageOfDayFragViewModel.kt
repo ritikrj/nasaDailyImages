@@ -1,4 +1,4 @@
-package com.rk.nasadailyimages.UI
+package com.rk.nasadailyimages.UI.screens.ImageOfDayScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +7,7 @@ import com.rk.nasadailyimages.Data.DataBaseEntity
 import com.rk.nasadailyimages.Data.ImageLoadResult
 import com.rk.nasadailyimages.Domain.usecases.ImageRequestUseCase
 import com.rk.nasadailyimages.Domain.usecases.Savefavoriteitem
+import com.rk.nasadailyimages.UI.ApplicationClass
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ class ImageOfDayFragViewModel:ViewModel() {
     var savefavoriteItem: Savefavoriteitem
     val result: MutableLiveData<DataBaseEntity> = MutableLiveData()
     val _result = result
+    val showToast:MutableLiveData<Boolean> = MutableLiveData()
 
     init {
         imageRequestUsecase = ApplicationClass.instance.getImageRequestUseCase()
@@ -32,6 +34,10 @@ class ImageOfDayFragViewModel:ViewModel() {
         requestImageOfDay("2022-04-03")
     }
 
+    fun resetToastFlag(){
+        showToast.postValue(false)
+    }
+
     fun requestImageOfDay(date:String) = viewModelScope.launch(Dispatchers.IO){
        val requestResult =  async(Dispatchers.IO){
             imageRequestUsecase.getImage(date)
@@ -41,6 +47,10 @@ class ImageOfDayFragViewModel:ViewModel() {
                 is ImageLoadResult.Success -> {
                     result.postValue(it.response)
                 }
+                is ImageLoadResult.Failure -> {
+                    showToast.postValue(true)
+                }
+
             }
         }
 

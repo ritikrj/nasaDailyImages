@@ -1,18 +1,18 @@
-package com.rk.nasadailyimages.UI
+package com.rk.nasadailyimages.UI.screens.ImageOfDayScreen
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
-import android.widget.EditText
-import android.widget.RadioGroup
-import androidx.lifecycle.Observer
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.rk.nasadailyimages.DI.AppComponent
-import com.rk.nasadailyimages.Data.DataBaseEntity
-import com.rk.nasadailyimages.R
+import com.rk.nasadailyimages.UI.ImageUtils
 import com.rk.nasadailyimages.databinding.FragmentImageOfTheDayBinding
 
 
@@ -51,12 +51,25 @@ class ImageOfDayFrag : Fragment() {
                     CompoundButton.OnCheckedChangeListener {
                     override fun onCheckedChanged(p0: CompoundButton?, isChecked: Boolean) {
                        viewModel.updateImageOfDayItem(isChecked)
+                        val view: View = binding.editTextDate
+                        if (view != null) {
+                            val im: InputMethodManager? =
+                                context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                            im?.hideSoftInputFromWindow(view.windowToken, 0)
+                        }
                     }
 
                 })
             }
+            viewModel.showToast.observe(viewLifecycleOwner,{
+                if(it) Toast.makeText(context, " Please enter a valid date in YYYY-MM-DD format",Toast.LENGTH_SHORT).show()
+                viewModel.resetToastFlag()
+
+            })
 
         }
+
+
 
     }
 

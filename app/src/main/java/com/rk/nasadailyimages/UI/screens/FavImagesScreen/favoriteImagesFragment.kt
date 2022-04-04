@@ -9,7 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rk.nasadailyimages.Data.DataBaseEntity
-import com.rk.nasadailyimages.R
+import com.rk.nasadailyimages.UI.screens.FavImagesScreen.FavItemsAdapter
+import com.rk.nasadailyimages.UI.screens.FavImagesScreen.FavoriteImagesViewModel
 import com.rk.nasadailyimages.databinding.FragmentFavouriteImagesBinding
 
 

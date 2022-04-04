@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.rk.nasadailyimages.R
+import com.rk.nasadailyimages.UI.screens.ImageOfDayScreen.ImageOfDayFrag
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
         val tr = supportFragmentManager.beginTransaction()
         supportFragmentManager.findFragmentById(R.id.container)?.let { tr.remove(it) }
-        tr.add(R.id.container,ImageOfDayFrag())
+        tr.add(R.id.container, ImageOfDayFrag())
         tr.commit()
 
     }
@@ -46,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
     fun showImageOfDayFragment(){
         val tr = supportFragmentManager.beginTransaction()
         supportFragmentManager.findFragmentById(R.id.container)?.let { tr.remove(it) }
-        tr.add(R.id.container,ImageOfDayFrag())
+        tr.add(R.id.container, ImageOfDayFrag())
         tr.commit()
     }
 

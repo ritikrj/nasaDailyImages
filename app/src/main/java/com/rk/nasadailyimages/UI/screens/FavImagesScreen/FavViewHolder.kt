@@ -1,9 +1,8 @@
-package com.rk.nasadailyimages.UI
+package com.rk.nasadailyimages.UI.screens.FavImagesScreen
 
-import android.view.View
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.rk.nasadailyimages.Data.DataBaseEntity
+import com.rk.nasadailyimages.UI.ImageUtils
 import com.rk.nasadailyimages.databinding.FavItemBinding
 
 class FavViewHolder(val binding:  FavItemBinding):RecyclerView.ViewHolder(binding.root) {

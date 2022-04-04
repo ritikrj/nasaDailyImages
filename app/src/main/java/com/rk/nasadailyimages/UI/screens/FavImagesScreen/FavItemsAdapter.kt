@@ -1,4 +1,4 @@
-package com.rk.nasadailyimages.UI
+package com.rk.nasadailyimages.UI.screens.FavImagesScreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

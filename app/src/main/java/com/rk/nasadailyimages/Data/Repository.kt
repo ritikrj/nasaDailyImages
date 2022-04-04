@@ -27,12 +27,17 @@ class Repository @Inject constructor(val imageOfDayApi:NasaAPI, val db:DataBase)
                 call: Call<ImageOfDateResponnseModel>?,
                 response: Response<ImageOfDateResponnseModel>?
             ) {
-                Log.d("${this.javaClass} "," Success "+response?.body().toString())
-               // val coroutineScope = CoroutineScope(Job())
-              //  coroutineScope.launch(Dispatchers.IO) {
-                  ApplicationClass.instance.getDataBase().imageTableDao().insert((response?.body() as ImageOfDateResponnseModel ).toDBEntry())
-            //    }
 
+                Log.d("${this.javaClass} "," Success "+response?.body().toString())
+
+                    response?.body()?.let {
+                        ApplicationClass.instance.getDataBase().imageTableDao().insert((response?.body() as ImageOfDateResponnseModel ).toDBEntry())
+
+                    } ?:run{
+                        it.resume(ImageLoadResult.Failure(), null)
+                    }
+                //  ApplicationClass.instance.getDataBase().imageTableDao().insert((response?.body() as ImageOfDateResponnseModel ).toDBEntry())
+                if(response?.body() != null)
                 it.resume(ImageLoadResult.Success((response?.body() as ImageOfDateResponnseModel ).toDBEntry() ),null)
             }
 
