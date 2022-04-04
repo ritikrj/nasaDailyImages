@@ -49,4 +49,10 @@ class Repository @Inject constructor(val imageOfDayApi:NasaAPI, val db:DataBase)
     override fun updateItem(item: DataBaseEntity) {
         db.imageTableDao().update(item)
     }
+
+    override fun getFavItemList(): List<DataBaseEntity> {
+       return db.imageTableDao().getAllFav().filter { it.isFavourite }
+    }
+
+
 }

@@ -7,8 +7,6 @@ import com.rk.nasadailyimages.Common.Constants
 
 @Entity(tableName = Constants.IMAGES_TABLE)
 class DataBaseEntity (
-    @ColumnInfo(name = "copyright")
-    val copyright: String,
     @PrimaryKey
     @ColumnInfo(name = "date")
     val date: String,

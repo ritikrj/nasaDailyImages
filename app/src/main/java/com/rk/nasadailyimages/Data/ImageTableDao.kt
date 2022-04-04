@@ -13,8 +13,8 @@ interface ImageTableDao {
     @Update
     fun update(item:DataBaseEntity)
 
-    @Query("SELECT * FROM "+ "images_table" +" WHERE "+Constants.IMAGE_TABLE_IS_FAVORITE+" = :fav")
-    fun getAllFav(fav:Boolean = true):List<DataBaseEntity>
+    @Query("SELECT * FROM "+ "images_table")
+    fun getAllFav():List<DataBaseEntity>
 
     @Query("SELECT EXISTS (SELECT 1 FROM images_table WHERE date = :query)")
     fun exists(query: String): Boolean

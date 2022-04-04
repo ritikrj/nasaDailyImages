@@ -6,4 +6,5 @@ import com.rk.nasadailyimages.Data.ImageLoadResult
 interface IRepository {
     suspend fun  loadImageOfTheDay(date:String): ImageLoadResult
     fun updateItem(item:DataBaseEntity)
+    fun getFavItemList(): List<DataBaseEntity>
 }

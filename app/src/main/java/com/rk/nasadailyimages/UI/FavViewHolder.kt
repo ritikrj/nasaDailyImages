@@ -10,5 +10,7 @@ class FavViewHolder(val binding:  FavItemBinding):RecyclerView.ViewHolder(bindin
 
     fun onBind(item: DataBaseEntity){
         ImageUtils.loadImageInView(binding.root.context, item.url, binding.favImage)
+        binding.favImageTitle.text = item.title
+        binding.date.text = item.date
     }
 }
