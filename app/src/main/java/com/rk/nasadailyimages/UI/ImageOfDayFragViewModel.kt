@@ -48,6 +48,9 @@ class ImageOfDayFragViewModel:ViewModel() {
     }
 
     fun updateImageOfDayItem(isChecked:Boolean){
-        savefavoriteItem.saveItem(result.value!!)
+        val curr = result.value as DataBaseEntity
+        curr.isFavourite = isChecked
+        result.postValue(curr)
+        savefavoriteItem.saveItem(curr)
     }
 }

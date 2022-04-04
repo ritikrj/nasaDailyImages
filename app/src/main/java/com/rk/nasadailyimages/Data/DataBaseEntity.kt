@@ -25,5 +25,5 @@ class DataBaseEntity (
     @ColumnInfo(name = "url")
     val url: String,
     @ColumnInfo(name = "favourite")
-    val isFavourite:Boolean
+    var isFavourite:Boolean
 )

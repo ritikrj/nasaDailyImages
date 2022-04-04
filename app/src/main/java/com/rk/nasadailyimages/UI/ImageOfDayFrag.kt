@@ -46,12 +46,11 @@ class ImageOfDayFrag : Fragment() {
                 getImageOfDayButton.setOnClickListener {
                     viewModel.requestImageOfDay(editTextDate.text.toString())
                 }
+                checkBox.isChecked = it.isFavourite
                 checkBox.setOnCheckedChangeListener(object :
                     CompoundButton.OnCheckedChangeListener {
                     override fun onCheckedChanged(p0: CompoundButton?, isChecked: Boolean) {
-                        if(isChecked){
-                          viewModel
-                        }
+                       viewModel.updateImageOfDayItem(isChecked)
                     }
 
                 })

@@ -13,6 +13,11 @@ class Repository @Inject constructor(val imageOfDayApi:NasaAPI, val db:DataBase)
 
 
     override suspend fun  loadImageOfTheDay(date:String):ImageLoadResult = suspendCancellableCoroutine<ImageLoadResult>{
+      if(db.imageTableDao().exists(date))
+      {
+          it.resume(ImageLoadResult.Success(db.imageTableDao().get(date)),null)
+          return@suspendCancellableCoroutine
+      }
       val query:HashMap<String, String> = HashMap()
         Log.d("${this.javaClass} "," requesting "+date)
         query["date"] = date
