@@ -1,12 +1,12 @@
 package com.rk.nasadailyimages.Domain.usecases
 
-import com.rk.nasadailyimages.Data.ImageLoadResult
-import com.rk.nasadailyimages.Data.Repository
+import com.rk.nasadailyimages.Data.Network.ImageLoadResult
+import com.rk.nasadailyimages.Domain.repo.IRepository
 import javax.inject.Inject
 
-class ImageRequestUseCase @Inject constructor(val repository: Repository){
+class ImageRequestUseCase @Inject constructor(val repository: IRepository){
 
-    suspend fun getImage(date:String):ImageLoadResult{
+    suspend fun getImage(date:String): ImageLoadResult {
         return repository.loadImageOfTheDay(date)
     }
 }

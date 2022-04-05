@@ -1,4 +1,4 @@
-package com.rk.nasadailyimages.Data
+package com.rk.nasadailyimages.Data.DB
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

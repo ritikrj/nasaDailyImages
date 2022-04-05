@@ -3,8 +3,8 @@ package com.rk.nasadailyimages.UI.screens.ImageOfDayScreen
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rk.nasadailyimages.Data.DataBaseEntity
-import com.rk.nasadailyimages.Data.ImageLoadResult
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
+import com.rk.nasadailyimages.Data.Network.ImageLoadResult
 import com.rk.nasadailyimages.Domain.usecases.ImageRequestUseCase
 import com.rk.nasadailyimages.Domain.usecases.Savefavoriteitem
 import com.rk.nasadailyimages.UI.ApplicationClass

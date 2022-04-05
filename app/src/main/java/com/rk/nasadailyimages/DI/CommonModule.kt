@@ -2,10 +2,10 @@ package com.rk.nasadailyimages.DI
 
 import android.content.Context
 import com.rk.nasadailyimages.Common.Constants
-import com.rk.nasadailyimages.Data.DataBase
-import com.rk.nasadailyimages.Data.NasaAPI
-import com.rk.nasadailyimages.UI.ApplicationClass
-import dagger.Component
+import com.rk.nasadailyimages.Data.DB.DataBase
+import com.rk.nasadailyimages.Data.Network.NasaAPI
+import com.rk.nasadailyimages.Data.Repository
+import com.rk.nasadailyimages.Domain.repo.IRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -26,14 +26,19 @@ class CommonModule(val applicationContext: Context) {
 
     @Provides
     @Singleton
-    fun getNasaApi(retrofit: Retrofit):NasaAPI{
+    fun getNasaApi(retrofit: Retrofit): NasaAPI {
         return retrofit.create(NasaAPI::class.java)
     }
 
     @Provides
     @Singleton
-    fun getImageDB():DataBase{
+    fun getImageDB(): DataBase {
        return DataBase.getDatabase(applicationContext)
+    }
+    @Provides
+    @Singleton
+    fun getRepository(repository: Repository):IRepository{
+        return repository
     }
 
 

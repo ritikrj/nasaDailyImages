@@ -1,17 +1,18 @@
-package com.rk.nasadailyimages.Data
+package com.rk.nasadailyimages.Data.DB
 
 import androidx.room.*
 import com.rk.nasadailyimages.Common.Constants
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
 
 @Dao
 interface ImageTableDao {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(item:DataBaseEntity)
+    fun insert(item: DataBaseEntity)
 
     @Update
-    fun update(item:DataBaseEntity)
+    fun update(item: DataBaseEntity)
 
     @Query("SELECT * FROM "+ "images_table")
     fun getAllFav():List<DataBaseEntity>

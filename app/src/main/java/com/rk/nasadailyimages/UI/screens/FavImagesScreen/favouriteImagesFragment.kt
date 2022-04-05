@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rk.nasadailyimages.Data.DataBaseEntity
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
 import com.rk.nasadailyimages.UI.screens.FavImagesScreen.FavItemsAdapter
 import com.rk.nasadailyimages.UI.screens.FavImagesScreen.FavoriteImagesViewModel
 import com.rk.nasadailyimages.databinding.FragmentFavouriteImagesBinding
 
 
-class ImageOfTheDayFragment : Fragment() {
+class favouriteImagesFragment : Fragment() {
 
     lateinit var binding: FragmentFavouriteImagesBinding
     val adapter: FavItemsAdapter by lazy { FavItemsAdapter(emptyList()) }
@@ -52,5 +52,5 @@ class ImageOfTheDayFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() =
-            ImageOfTheDayFragment()}
+            favouriteImagesFragment()}
 }

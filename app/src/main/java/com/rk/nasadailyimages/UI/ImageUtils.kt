@@ -9,10 +9,10 @@ class ImageUtils {
     companion object{
         fun loadImageInView(context: Context, url:String, imageView:ImageView){
             Glide.with(context)
-                .load(url) // image url
-                .placeholder(R.drawable.placeholder_image) // any placeholder to load at start
-                .error(R.drawable.error)  // any image in case of error
-                .override(200, 200) // resizing
+                .load(url)
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.error)
+                .override(200, 200)
                 .into(imageView)
         }
     }

@@ -1,4 +1,4 @@
-package com.rk.nasadailyimages.Data
+package com.rk.nasadailyimages.Data.Network
 
 data class Error(
     val code: String,

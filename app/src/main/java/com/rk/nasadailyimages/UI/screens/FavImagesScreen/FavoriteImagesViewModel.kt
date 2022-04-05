@@ -3,7 +3,7 @@ package com.rk.nasadailyimages.UI.screens.FavImagesScreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rk.nasadailyimages.Data.DataBaseEntity
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
 import com.rk.nasadailyimages.Domain.usecases.LoadFavImages
 import com.rk.nasadailyimages.UI.ApplicationClass
 

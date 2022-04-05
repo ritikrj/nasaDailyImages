@@ -3,7 +3,7 @@ package com.rk.nasadailyimages.UI.screens.FavImagesScreen
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.rk.nasadailyimages.Data.DataBaseEntity
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
 import com.rk.nasadailyimages.databinding.FavItemBinding
 
 class FavItemsAdapter(var favList: List<DataBaseEntity>):RecyclerView.Adapter<FavViewHolder>() {

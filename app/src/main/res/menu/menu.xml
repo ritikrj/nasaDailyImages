@@ -2,6 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/favImageFrag" android:title="favorite Images" />
+    <item android:id="@+id/favImageFrag" android:title="favourite Images" />
     <item android:id="@+id/ImageOfDayFrag" android:title="Image of The day" />
 </menu>

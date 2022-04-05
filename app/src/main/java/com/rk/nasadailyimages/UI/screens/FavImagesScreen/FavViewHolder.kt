@@ -1,7 +1,7 @@
 package com.rk.nasadailyimages.UI.screens.FavImagesScreen
 
 import androidx.recyclerview.widget.RecyclerView
-import com.rk.nasadailyimages.Data.DataBaseEntity
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
 import com.rk.nasadailyimages.UI.ImageUtils
 import com.rk.nasadailyimages.databinding.FavItemBinding
 

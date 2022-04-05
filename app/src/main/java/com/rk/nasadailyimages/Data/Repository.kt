@@ -1,6 +1,12 @@
 package com.rk.nasadailyimages.Data
 
 import android.util.Log
+import com.rk.nasadailyimages.Data.DB.DataBase
+import com.rk.nasadailyimages.Data.DB.DataBaseEntity
+import com.rk.nasadailyimages.Data.Network.ImageLoadResult
+import com.rk.nasadailyimages.Data.Network.ImageOfDateResponnseModel
+import com.rk.nasadailyimages.Data.Network.NasaAPI
+import com.rk.nasadailyimages.Data.Network.toDBEntry
 import com.rk.nasadailyimages.Domain.repo.IRepository
 import com.rk.nasadailyimages.UI.ApplicationClass
 import kotlinx.coroutines.*
@@ -9,10 +15,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class Repository @Inject constructor(val imageOfDayApi:NasaAPI, val db:DataBase):IRepository {
+class Repository @Inject constructor(val imageOfDayApi: NasaAPI, val db: DataBase):IRepository {
 
 
-    override suspend fun  loadImageOfTheDay(date:String):ImageLoadResult = suspendCancellableCoroutine<ImageLoadResult>{
+    override suspend fun  loadImageOfTheDay(date:String): ImageLoadResult = suspendCancellableCoroutine<ImageLoadResult>{
       if(db.imageTableDao().exists(date))
       {
           it.resume(ImageLoadResult.Success(db.imageTableDao().get(date)),null)

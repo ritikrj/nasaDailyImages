@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.rk.nasadailyimages.Common.Constants
 import com.rk.nasadailyimages.DI.AppComponent
 import com.rk.nasadailyimages.UI.ImageUtils
 import com.rk.nasadailyimages.databinding.FragmentImageOfTheDayBinding
@@ -62,7 +63,7 @@ class ImageOfDayFrag : Fragment() {
                 })
             }
             viewModel.showToast.observe(viewLifecycleOwner,{
-                if(it) Toast.makeText(context, " Please enter a valid date in YYYY-MM-DD format",Toast.LENGTH_SHORT).show()
+                if(it) Toast.makeText(context, Constants.TOAST_ERROR_MESSAGE,Toast.LENGTH_SHORT).show()
                 viewModel.resetToastFlag()
 
             })

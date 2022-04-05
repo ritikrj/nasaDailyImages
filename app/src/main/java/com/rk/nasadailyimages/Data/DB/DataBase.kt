@@ -1,7 +1,8 @@
-package com.rk.nasadailyimages.Data
+package com.rk.nasadailyimages.Data.DB
 
 import android.content.Context
 import androidx.room.*
+
 @Database(entities = [DataBaseEntity::class], version = 1, exportSchema = false)
 abstract class DataBase: RoomDatabase() {
     abstract fun imageTableDao(): ImageTableDao
@@ -12,7 +13,7 @@ abstract class DataBase: RoomDatabase() {
         @Volatile
         private var INSTANCE: DataBase? = null
 
-        fun getDatabase(context: Context):DataBase {
+        fun getDatabase(context: Context): DataBase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
